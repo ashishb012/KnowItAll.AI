@@ -18,12 +18,15 @@ const conversationArr = [
   },
 ];
 
-console.log(conversationArr);
+document.getElementById("clear-btn").addEventListener("click", () => {
+  conversationArr.splice(1);
+  chatbotConversation.innerHTML = `<div class="speech speech-ai">How can I help you?</div>`;
+});
+
 document.addEventListener("submit", (e) => {
   e.preventDefault();
   const userInput = document.getElementById("user-input");
   conversationArr.push({ role: "user", content: userInput.value });
-  console.log(conversationArr);
   fetchReply();
   const newSpeechBubble = document.createElement("div");
   newSpeechBubble.classList.add("speech", "speech-human");
